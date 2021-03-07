@@ -20,9 +20,8 @@ function populateVoiceList() {
         const aname = a.name.toUpperCase(), bname = b.name.toUpperCase();
         if (aname < bname) return -1;
         else if (aname == bname) return 0;
-        else return +1;
+        else return +1; 
     });
-    //   var selectedIndex = voiceSelect.selectedIndex < 0 ? 0 : voiceSelect.selectedIndex;
     voiceSelect.innerHTML = '';
     for (i = 0; i < voices.length; i++) {
         var option = document.createElement('option');
@@ -32,8 +31,6 @@ function populateVoiceList() {
             option.textContent += ' -- DEFAULT';
         }
         if (voices[i].name === 'Google US English') {
-            console.log("yess")
-            // option.selected = true
             option.setAttribute('selected', 'selected');
 
         }
@@ -42,7 +39,6 @@ function populateVoiceList() {
 
         voiceSelect.appendChild(option);
     }
-    //   voiceSelect.selectedIndex = selectedIndex;
 }
 
 populateVoiceList();
@@ -59,7 +55,6 @@ function myTimer() {
 function speak() {
 
     if (synth.speaking && !isPaused) {
-        console.log('Already speaking');
         return;
     }
     
@@ -94,7 +89,6 @@ function speak() {
 inputForm.onsubmit = function (event) {
     event.preventDefault();
     if(isPaused) {
-        console.log("is Paused............")
         isPaused = false;
         synth.resume()
         myTimeout = setTimeout(myTimer,5000);
